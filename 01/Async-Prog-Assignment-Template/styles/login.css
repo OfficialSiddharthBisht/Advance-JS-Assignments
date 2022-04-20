@@ -1,0 +1,8 @@
+#login-form-div form *{
+    display: block;
+    text-align: center;
+    /* top right bottom left */
+    margin: 50px auto 50px auto;
+    width: 50%;
+    font-size: 21px;
+}
