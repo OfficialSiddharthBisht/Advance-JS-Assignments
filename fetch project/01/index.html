@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB Project</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tapestry&display=swap');
+        *{
+            font-family: 'Tapestry', cursive;
+            text-align: center;
+        }
+        :root{
+            --bgurl:url('https://www.ubuy.co.in/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTFtZHB0MlpDRkwuX0FDX1NMMTUwMF8uanBn.jpg');
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background :linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), var(--bgurl);
+        }
+        .navbar{
+            background-color: rgba(0, 0, 0, 0.325);
+            border: 4px solid rgb(30, 54, 58);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            margin: 15px;
+        }
+        header .navbar ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            font-size: 21px;
+        }
+        header .navbar ul li{
+            list-style: none;
+        }
+        #searchBtn{
+            font-size: 23px;
+            border-radius: 50px;
+            color: blue;
+            padding: 12px;
+        }
+        header .navbar ul input{
+            font-size: 21px;
+            color: black;
+        }
+        ul li{
+            padding: 5%;
+        }
+        h2{
+            color: white;
+        }
+        p{
+            font-size: 21px;
+            background-color: darkseagreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <ul>
+                <li><h2> Movie Search</h2></li>
+                <li><input  id = "searchItem" type="text" placeholder="Search  Movie / Series"></li>
+                <li><button  id = "searchBtn">Search</button></li>
+            </ul>
+        </div>
+        <div id="container">
+
+        </div>
+    </header>
+
+    <script>
+        let searchBtn = document.getElementById("searchBtn");
+        searchBtn.addEventListener('click',(event)=>{
+            event.preventDefault();
+            let searchItem = document.getElementById('searchItem').value;
+            fetch(`https://www.omdbapi.com/?t=${searchItem}&apikey=8a0425d8`)
+            .then(res=>res.json())
+            .then(data=>displayData(data))
+        })
+        function displayData(data){
+
+            let container = document.getElementById("container");
+            container.innerHTML = "";
+            let title = document.createElement("h1");
+            let releaseDate = document.createElement("h4");
+            let poster = document.createElement("img");
+            let plot = document.createElement("p");
+            let awards = document.createElement("h3");
+            title.innerText = data.Title;
+            releaseDate.innerText = "Released : " + data.Released;
+            poster.src = data.Poster;
+            plot.innerText = '" '+ data.Plot + ' "';
+            if(data.awards == undefined){
+                awards.innerText = "";
+            }else{
+                awards.innerText = "Awards : "+ data.awards;
+            }
+            container.append(title,releaseDate,poster,awards,plot);
+        }
+       
+    </script>
+</body>
+</html>
