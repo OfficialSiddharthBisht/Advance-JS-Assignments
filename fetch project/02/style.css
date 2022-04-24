@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Tapestry&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Tapestry', cursive;
+    text-align: center;
+    color: black;
+}
+:root{
+    --bgurl:url('https://www.ubuy.co.in/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTFtZHB0MlpDRkwuX0FDX1NMMTUwMF8uanBn.jpg');
+}
+body{
+    box-sizing: border-box;
+    background :linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), var(--bgurl);
+}
+.navbar{
+    background-color: rgba(0, 0, 0, 0.325);
+    border: 2px solid rgb(30, 54, 58);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    /* margin: 15px; */
+}
+header .navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 19px;
+}
+header .navbar ul li{
+    list-style: none;
+}
+#searchBtn{
+    font-size: 18px;
+    border-radius: 50px;
+    color: blue;
+    padding: 6px;
+}
+header .navbar ul input{
+    font-size: 21px;
+    color: black;
+}
+#plot{
+    margin: auto;
+    width: 30%;
+}
+p{
+    font-size: 21px;
+    background-color: darkseagreen;
+}
